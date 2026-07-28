@@ -8,4 +8,4 @@ SWEA 문제를 푸는 공간입니다.
 |-------------|-------------------|--------------------------|
 |20260724     | 1249. 보급로        |[보급로 바로가기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15QRX6APsCFAYD&categoryId=AV15QRX6APsCFAYD&categoryType=CODE&problemTitle=%EB%B3%B4%EA%B8%89%EB%A1%9C&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1) |
 |20260727     | 1248. 공통조상        |[공통조상 바로가기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15PTkqAPYCFAYD) |
-
+|20260728     | 1798. 범준이의 제주도 여행 계획        |[범준이의 제주도 여행 계획 바로가기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV4x9oyaCR8DFAUx) |
