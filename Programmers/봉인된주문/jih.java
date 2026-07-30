@@ -1,6 +1,6 @@
 import java.util.*;
 
-class p봉인된주문_jih {
+class jih {
 
     public String solution(long n, String[] bans) {
         int removed = 0;
