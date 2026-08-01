@@ -1,6 +1,7 @@
 class Solution {
     static int result;
     static boolean[] visited;
+    
     public int solution(String begin, String target, String[] words) {
         
         result = 51;
