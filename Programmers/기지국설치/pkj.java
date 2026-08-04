@@ -31,7 +31,7 @@ class Solution {
                 int emptyLength = nextStationStart - position;
               
                 // 빈 구간에 필요한 최소 기지국 개수를 계산
-                result += (emptyLength + networkRange - 1) / networkRange;
+                result += (int) Math.ceil((double) emptyLength / networkRange);
               
                 // 탐색 위치 이동
                 position = nextStationStart;
