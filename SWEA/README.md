@@ -11,3 +11,4 @@ SWEA 문제를 푸는 공간입니다.
 |20260728     | 1798. 범준이의 제주도 여행 계획        |[범준이의 제주도 여행 계획 바로가기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV4x9oyaCR8DFAUx) |
 |20260731     | 3421. 수제 버거 장인        |[수제 버거 장인 바로가기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWErcQmKy6kDFAXi) |
 |20260804     | 1245. 균형점        |[균형점 바로가기](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=5&contestProbId=AV15MeBKAOgCFAYD&categoryId=AV15MeBKAOgCFAYD&categoryType=CODE&problemTitle=&orderBy=SUBMIT_COUNT&selectCodeLang=ALL&select-1=5&pageSize=10&pageIndex=1&&&&&&&&&&) |
+|20260806     | 1265. 달란트2        |[달란트2 바로가기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV18R8FKIvoCFAZN) |
