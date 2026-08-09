@@ -163,7 +163,7 @@ public class Solution {
                         // 첫번째 0그룹의 인덱스값을 찾아서 그 앞으로 탐색 위치 이동
                         // 암호코드를 살펴보면 그룹에서 가장 작은 숫자는 무조건 1이다
                         int ratio = Math.min(Math.min(c2, c3), c4);
-                        // 이 점을 활용해서 암호코드의 굵기를 판단해 암호코드 압축
+                        // 이 점을 활용해서 쓸데없는 0 건너뛰고 앞으로 이동
                         int n1 = 7 - (c2 / ratio + c3 / ratio + c4 / ratio);
                         idx -= (n1 * ratio); 
                     }
