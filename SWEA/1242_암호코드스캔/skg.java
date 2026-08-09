@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 
 class Solution {
 	static int N, M;
-	// 첫번째 0의 길이는 필요 없다.
+	// 첫번째 0의 등장 빈도는 필요 없다.
 	static final String[] RATIO = { "211", "221", "122", "411", "132", "231", "114", "312", "213", "112" };
 
 	public static void main(String args[]) throws Exception {
@@ -23,6 +23,7 @@ class Solution {
 				M = Integer.parseInt(st.nextToken());
 				for (int i = 0; i < N; i++) {
 					String s = br.readLine();
+					// 한 줄을 통째로 2진수 문자열로 바꾸기.
 					char[] carr = transformArr(s.toCharArray()).toCharArray();
 
 					// 접근: 한 줄을 2진수 문자열로 만들어두고, 그 줄에 대해서
@@ -41,7 +42,7 @@ class Solution {
 						for (int x = 0; x < 8; x++) {
 							int cnt = 0;
 							int[] ratios = new int[3];
-							// 의미없는 0 넘기기
+							// 처음으로 마주하는 연속된 0들은 필요없으므로 넘기기
 							while ((idx < carr.length) && (carr[idx] == '0'))
 								idx++;
 							// 1 개수 세기
@@ -66,9 +67,10 @@ class Solution {
 							}
 							ratios[2] =  cnt;
 							
-							// sb에 있는 녀석들 기약분수로 나눠서 비율 형태로 만들기 -> ex) 224면 112로
+							// sb에 있는 녀석들 최솟값으로 나눠서 비율 형태로 만들기 -> ex) 224면 112로
 							final int min = Arrays.stream(ratios).min().orElse(1);
 							ratios = Arrays.stream(ratios).map(v -> v / min).toArray();
+							// code 변수에 숫자 형태로 넣어주기
 							code *= 10;
 							code += decode(ratios);
 						}
@@ -80,7 +82,6 @@ class Solution {
 				int answer = 0;
 
 				for (int c : set) {
-//					System.out.println(c);
 					answer += validTest(c);
 				}
 
@@ -89,11 +90,6 @@ class Solution {
 			}
 		}
 
-	}
-
-	// 16진수 문자 -> 2진수 String 반환
-	static String transformU(char hex) {
-		return transformTwo(transformTen(hex));
 	}
 
 	// 16진수 문자열 -> 2진수 String 변환
@@ -125,60 +121,8 @@ class Solution {
 
 		return sb.reverse().toString();
 	}
-
-	// 주어진 이진수 String의 암호코드를 반환.
-	static int[] makeCode(String binaries) {
-		System.out.println(binaries);
-		int[] res = new int[8];
-		char[] carr = binaries.toCharArray();
-		int c_idx = carr.length - 1;
-		int res_idx = 7;
-		// 일단 맨끝에서 1이 나올 때까지 앞으로 가기
-		while (carr[c_idx] == '0')
-			c_idx--;
-		// 8번 실행
-		while (res_idx >= 0) {
-			// parts에 각 숫자가 나온 횟수 저장하기
-			int[] parts = new int[4];
-			for (int i = 0; i < 4; i++) {
-				if (c_idx < 0)
-					break; // 에러 발생 -> 만약 맨 앞이 1101.. 이런 식이면 첫 번째 0 구간이 안 나온다.
-				char last_c = carr[c_idx];
-				while (c_idx >= 0 && last_c == carr[c_idx]) {
-					parts[3 - i]++;
-					c_idx--;
-				}
-			}
-			// parts 값 중 최솟값 구하기
-			int min = 100000;
-			int[] parts_except_first_zero = Arrays.copyOfRange(parts, 1, 4);
-			for (int p : parts_except_first_zero)
-				min = Math.min(min, p);
-			final int mmin = min;
-			StringBuilder sb = new StringBuilder();
-			Arrays.stream(parts_except_first_zero).map(v -> {
-				return v / mmin;
-			}).forEach(v -> sb.append(v));
-			;
-			res[res_idx] = decode(sb.toString());
-			System.out.println(res[res_idx]);
-
-			res_idx--;
-		}
-
-		return res;
-	}
-
-	// 주어진 String이 몇번 codes에 해당하는지 리턴
-	static int decode(String str) {
-		for (int i = 0; i < RATIO.length; i++) {
-			if (RATIO[i].equals(str))
-				return i;
-		}
-
-		return -1;
-	}
 	
+	// 주어진 등장 횟수 비율을 해독
 	static int decode(int[] ratios) {
 		int sum = 0;
 		for (int r : ratios) {
@@ -210,16 +154,5 @@ class Solution {
 			return even_sum + odd_sum;
 		}
 		return 0;
-	}
-
-	// int[8] -> int 변환
-	static int makeInt(int[] arr) {
-		int sum = 0;
-		for (int n : arr) {
-			sum *= 10;
-			sum += n;
-		}
-
-		return sum;
 	}
 }
