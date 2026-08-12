@@ -1,6 +1,9 @@
 import java.io.*;
 import java.util.*;
-
+/*
+ 1. 악마 여러개인 경우 놓쳐서 3/10개 틀렸음
+ 2. 수연이 D 못만나게 만들어버림
+ */
 public class Solution {
 
 	static int N, M;
@@ -40,21 +43,18 @@ public class Solution {
 			}
 
 			result.append("#" + tc + " " + min + "\n");
-
 		}
 
 		System.out.println(result);
 	}
 
 	private static int bfs(int syr, int syc, List<Point> devils) {
-
+		
+		int[] dr = { -1, 0, 1, 0 }, dc = { 0, -1, 0, 1 };
 		boolean[][] visited = new boolean[N][M];
 		int[][] affected = new int[N][M];
-		for (int i = 0; i < N; i++) {
-			Arrays.fill(affected[i], Integer.MAX_VALUE);
-		}
-
-		int[] dr = { -1, 0, 1, 0 }, dc = { 0, -1, 0, 1 };
+		
+		for (int i = 0; i < N; i++) Arrays.fill(affected[i], Integer.MAX_VALUE);
 
 		Queue<Point> q = new LinkedList<>();
 		for (Point d : devils) {
@@ -70,8 +70,7 @@ public class Solution {
 				int nr = np.r + dr[i];
 				int nc = np.c + dc[i];
 
-				if (nr < 0 || nc < 0 || nr >= N || nc >= M)
-					continue;
+				if (nr < 0 || nc < 0 || nr >= N || nc >= M) continue;
 
 				if (!visited[nr][nc] && (map[nr][nc] != 'X' && map[nr][nc] != 'D')) {
 					visited[nr][nc] = true;
@@ -88,15 +87,13 @@ public class Solution {
 		while (!q.isEmpty()) {
 			Point np = q.poll();
 
-			if (map[np.r][np.c] == 'D')
-				return np.d;
+			if (map[np.r][np.c] == 'D') return np.d;
 
 			for (int i = 0; i < 4; i++) {
 				int nr = np.r + dr[i];
 				int nc = np.c + dc[i];
 
-				if (nr < 0 || nc < 0 || nr >= N || nc >= M)
-					continue;
+				if (nr < 0 || nc < 0 || nr >= N || nc >= M) continue;
 
 				if (!visited[nr][nc] && (map[nr][nc] == '.' || map[nr][nc] == 'D') && affected[nr][nc] > np.d + 1) {
 					visited[nr][nc] = true;
