@@ -16,4 +16,4 @@ SWEA 문제를 푸는 공간입니다.
 |20260812     | 7793. 오! 나의 여신님       |[오! 나의 여신님 바로가기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWsBQpPqMNMDFARG) |
 |20260815     | 8191. 만화책 정렬하기       |[만화책정렬하기 바로가기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWwtYmX6hvsDFAWU) |
 |20260818     | [PRO] 도로 파괴       |[도로파괴 바로가기](https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZvan5jq8gHHBIN6&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM&problemBoxTitle=B%ED%98%95+%EA%B8%B0%EC%B6%9C&problemBoxCnt=31&&&&&&) |
-|20260820     | [Pro] 락다운 시티       |[락다운시티 바로가기](https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZxW57WKvrPHBIT3&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM&problemBoxTitle=B%ED%98%95+%EA%B8%B0%EC%B6%9C&problemBoxCnt=31) |
+|20260820     | [PRO] 락다운 시티       |[락다운시티 바로가기](https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZxW57WKvrPHBIT3&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM&problemBoxTitle=B%ED%98%95+%EA%B8%B0%EC%B6%9C&problemBoxCnt=31) |
