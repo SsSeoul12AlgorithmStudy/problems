@@ -1,5 +1,3 @@
-package solve.swea.만화책정렬하기;
-
 import java.io.*;
 import java.util.*;
 
