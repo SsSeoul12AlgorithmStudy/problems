@@ -2,11 +2,12 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /*
- * 이차원 배열이 아닌 높이 배열, 가장 위에 접합부 배열로 관리
- * PQ에 집어넣는 커스텀 함수 : calcStructures : PQ 반환
- * checkStructures : calcStructures -> 반환된 PQ의 size
- * addStructures : calcStructures -> 반환된 PQ의 peek에 직접 설치
- * 개수: 조건을 만족할 떄 PQ에 집어넣고 마지막에 PQ.size() 반환
+ * 안녕하세요 제가 오늘 면접이 있더라고요.. 그래서 이렇게나마 주석으로라도 함께 하려 합니다..
+ * 
+ * 이차원 배열이 아닌 input으로 주어진대로 높이 배열, 가장 위에 접합부 배열로 관리
+ * checkStructures : 가능한 갯수 세기
+ * addStructures : PQ에 가능한 녀석들 집어넣고 우선순위가 가장 높은 한 녀석에 붙이기.
+ * 물붓기: 수면 높이를 점차 높여가면서 가능한 경우에 대해서 PQ에 넣고 우선순위가 가장 높은 한 녀석 뽑기.
  */
 class Node {
 	int idx, st;
