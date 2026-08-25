@@ -1,9 +1,6 @@
-import java.util.ArrayDeque;
-import java.util.Queue;
+import java.util.*;
 
-// 노력했다는 이쁜 마음 알아주세요 *^^*
-
-/**
+/*
  * 3차원 vis 배열을 쓰는 BFS?
  * 사용횟수를 vis 배열에 기록하고 Q에도 특정 위치에 어떤 보안등급으로 왔는지 기록
  * vis[x][y][보안등급]
@@ -11,34 +8,63 @@ import java.util.Queue;
  * 'AZ' : 26 * 1 + 26, 'BA' : 26 * 2 + 1 = 53
  */
 
-class Node {
-	int x, y;
-	String S;
-	Node(int x, int y, String S) {
-		this.x = x;
-		this.y = y;
-		this.S = S;
-	}
-}
+/*
+ * 익환쌤: 이분 탐색을 통해 보안등급을 찾는다!
+ * 각 보안등급이 가능한지 여부는 매번 BFS를 돌아야 되긴 한다.
+ */
+
+/*
+ * 사전순서가 빠를수록 더 높은 보안 등급 -> 'A'가 제일 높은 보안등급이고 (상한선) 'ZZZ'가 가장 낮은 보안 등급 (하한선)
+ * 근데 출발 위치 기준 상하좌우 중 가장 낮은 보안등급이 하한선이 된다.
+ * left: 'A', right: 상하좌우 중 가장 낮은 보안등급
+ * 이분 탐색 -> mid BFS 후 도달 가능하면 mid = left
+ * 			 	 	    	불가능하면 mid = right
+ */
+
+/*
+ * 알파벳을 26진법으로 10진수로 변환한 것이 사전순일까? => 아니다..
+ * A - AA - AAA - AAB - AAC - ... - AAZ - AB - ABA
+ * 1	2	3	4	5
+ * 아니면 칸이 최대 10000개밖에 안되니까 각 칸에 있는 모든 문자열에 대해서 Set에 집어넣고 정렬?
+ * 정렬하는 데 시간이 더 오래 걸릴 것 같은데..
+ */
+
+/*
+ * 실수들 정리
+ * 1. 위와 같은 board에 나오는 애들만 정렬 방식은 -> board가 변경될 때마다 재정렬해줘야 하므로 부적절
+ * => 가능한 모든 문자열에 대해서 미리 keys에 저장해놓고 이분탐색
+ * 2. 가능한 모든 문자열 DFS 시에 DFS 자체가 사전순으로 진행되므로 따로 정렬하지 않고 바로바로 넣어주면 된다.
+ * => 또한 keys에 추가되고 DFS를 돌기 때문에 종료 조건을 길이 == M 일 때로 정해야 한다.
+ */
 
 class UserSolution {
-	int MX_W = 26 * 26 * 26 + 26 * 26 + 26 + 1;
-	final int MX_N = 100;
-	final int[][] dir = {{0,1}, {0,-1}, {1,0}, {-1,0}};
 	int N, M;
-	int[][][] vis;
 	String[][] board;
-	
+	List<String> keys;
+	PriorityQueue<String> PQ;
 	void init(int N, int M, String mGrade[][]) {
+		Set<String> keySet = new HashSet<>();
 		this.N = N;
 		this.M = M;
-		MX_W = 0;
-		for (int i = 0; i < M; i++) {
-			MX_W *= 26;
-			MX_W += 26;
-		}
-		
 		this.board = mGrade;
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				keySet.add(board[i][j]);
+			}
+		}
+		keys = new ArrayList<>();
+		DFS("");
+
+	}
+	
+	// 최대 M개 문자열 List에 넣기.
+	void DFS(String s) {
+		if (s.length() == M)	return;
+		for (int i = 0; i < 26; i++) {
+			String next = s.concat(String.valueOf((char)('A' + i)));
+			keys.add(next);
+			DFS(next);
+		}
 	}
 
 	void change(int mRow, int mCol, int mDir, int mLength, String mGrade) {
@@ -47,68 +73,66 @@ class UserSolution {
 		}
 	}
 
+	int L, sRow, sCol, eRow, eCol;
 	String calculate(int L, int sRow, int sCol, int eRow, int eCol) {
-		vis = new int[N][N][MX_W+1];
-		Queue<Node> Q = new ArrayDeque<Node>();
-		// 시작점 vis Q 초기화
-		Q.add(new Node(sRow, sCol, board[sRow][sCol]));
-		vis[sRow][sCol][mGradeToNum(board[sRow][sCol])] = 1;
-		// ret : 도착칸에 도달할 수 있는 가장 사전순서가 느린 보안등급
-		String ret = "9";
+		this.L = L;
+		this.sRow = sRow;
+		this.sCol = sCol;
+		this.eRow = eRow;
+		this.eCol = eCol;
+		// 불가능한 최초의 지점을 찾는 이분탐색
+		int left = 0;
+		int right = keys.size();
+		int mid;
+		while (left != right) {
+			mid = (left + right) / 2;
+			if (BFS(mid)) {
+				left = mid + 1;
+			} else {
+				right = mid;
+			}
+		}
+//		System.out.println("calc: " + keys.get(left - 1));
+		return keys.get(left - 1);
+	}
+	
+	final int[][] dir = {{0,1}, {0,-1}, {1,0}, {-1,0}};
+	Boolean BFS(int idx) {
+		String key = keys.get(idx);
+		
+		Queue<Node> Q = new ArrayDeque<>();
+		int[][] vis = new int[N][N];
+		Q.add(new Node(sRow, sCol));
+		vis[sRow][sCol] = 1;
+		
 		while (!Q.isEmpty()) {
 			Node cur = Q.poll();
-//			System.out.println("== this is " + cur.x + ", " + cur.y + ", " + cur.S);
 			if (cur.x == eRow && cur.y == eCol) {
-//				System.out.println(cur.S + " is arrived at " + vis[cur.x][cur.y][mGradeToNum(cur.S)]);
-				ret = (cur.S.compareTo(ret) < 0 ? ret : cur.S);
-				continue;
+				return true;
 			}
+			
 			for (int[] d : dir) {
 				int dx = d[0] + cur.x;
 				int dy = d[1] + cur.y;
 				if (dx < 0 || dy < 0 || dx >= N || dy >= N)	continue;
-				// 진행하려는 칸이 사전순으로 더 높으면 그게 필요함.
-				String req = (cur.S.compareTo(board[dx][dy]) > 0 ? board[dx][dy] : cur.S);
-//				System.out.println("req is " + req + " and ret is " + ret + " and res is " + (vis[dx][dy][mGradeToNum(req)] > 0 ? "true" : "false"));
-				if (vis[dx][dy][mGradeToNum(req)] > 0)	continue;
-				// ret보다 사전순으로 더 빠르거나 같으면 탈락
-				if (req.compareTo(ret) <= 0)	continue;
-				// 만약 L+1 보다 커지면 탈락
-				if (vis[cur.x][cur.y][mGradeToNum(cur.S)] + 1 > L + 1)	continue;
-//				System.out.println("moved to " + dx + "," + dy + " as " + req);
-//				System.out.println("board: " + board[dx][dy] + " and cur.S is " + cur.S + " // result is " + board[dx][dy].compareTo(cur.S));
-				Q.add(new Node(dx, dy, req));
-				vis[dx][dy][mGradeToNum(req)] = vis[cur.x][cur.y][mGradeToNum(cur.S)] + 1;
+				if (vis[dx][dy] > 0)	continue;
+				if (vis[cur.x][cur.y] + 1 > L + 1)	continue;
+				// 다음 진행할 칸이 key보다 사전순으로 빠르면 진행 불가능.
+				if (board[dx][dy].compareTo(key) < 0)	continue;
+				Q.add(new Node(dx, dy));
+				vis[dx][dy] = vis[cur.x][cur.y] + 1; 
 			}
 		}
-//		printBoard();
-//		System.out.println("ret is " + ret);
 		
-		return ret;
+		return false;
 	}
-	
-	int r_vis(int x, int y) {
-		return vis[x][y][mGradeToNum(board[x][y])];
-	}
-	
-	// 보안등급 -> 숫자 전환 함수
-	int mGradeToNum(String mGrade) {
-		char[] m = mGrade.toCharArray();
-		int res = 0;
-		for (int i = 0; i < m.length; i++) {
-			res *= 26;
-			res += m[i] - 'A' + 1;
-		}
-		return res;
-	}
-	
-	void printBoard() {
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				System.out.print( board[i][j] + ' ');
-			}
-			System.out.println();
-		}
-	}
-
 }
+
+class Node {
+	int x, y;
+	Node(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+}
+
