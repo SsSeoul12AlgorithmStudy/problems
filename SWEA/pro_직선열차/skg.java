@@ -64,7 +64,7 @@ class Train {
 		this.itvl = itvl;
 	}
 	
-	// 이 열차가 station에서 정차하는 지 여부를 반환
+	// 이 열차가 station에서 정차하는 지 여부를 반환 O(1)
 	boolean hasStation(int station) {
 		return (st <= station && station <= end) && ((station - st) % itvl == 0);
 	}
@@ -91,7 +91,7 @@ class UserSolution {
 				int id1 = keys.get(i);
 				int id2 = keys.get(j);
 				if (id1 == id2)	continue;
-				if (isConnected(id1, id2)) {
+				if (isConnected2(id1, id2)) {
 					edge.get(id1).add(id2);
 					edge.get(id2).add(id1);
 				}
@@ -107,7 +107,7 @@ class UserSolution {
 		
 		for (int id : train_map.keySet()) {
 			if (id == mId)	continue;
-			if (isConnected(mId, id)) {
+			if (isConnected2(mId, id)) {
 				edge.get(mId).add(id);
 				edge.get(id).add(mId);
 			}
@@ -166,6 +166,22 @@ class UserSolution {
 		Train t1 = train_map.get(t_id1);
 		Train t2 = train_map.get(t_id2);
 		for (int s = t1.st; s <= t1.end; s += t1.itvl) {
+			if (t2.hasStation(s))	return true;
+		}
+		
+		return false;
+	}
+	
+	// 실행시간 80ms 감소했지만 유의미하진 않은 것 같다.
+	boolean isConnected2(int t_id1, int t_id2) {
+		Train t1 = train_map.get(t_id1);
+		Train t2 = train_map.get(t_id2);
+		int start = Math.max(t1.st, t2.st);
+		int end = Math.min(t1.end, t2.end);
+		if (start > end)	return false;
+		int remain = (start  - t1.st) % t1.itvl;
+		int s = start + (remain > 0 ? t1.itvl - remain : 0);
+		for (; s <= end; s += t1.itvl) {
 			if (t2.hasStation(s))	return true;
 		}
 		
