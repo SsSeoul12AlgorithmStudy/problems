@@ -13,3 +13,4 @@ Programmers 문제를 푸는 공간입니다.
 |20260805     | 불량 사용자        |[불량 사용자 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/64064) |
 |20260810     | 스티커 모으기(2)        |[스티커 모으기(2) 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/12971) |
 |20260813     | 연속 펄스 부분 수열의 합        |[연속 펄스 부분 수열의 합 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/161988) |
+|20260902     | 파괴되지 않은 건물        |[LV3 파괴되지 않은 건물 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/92344) |
