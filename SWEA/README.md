@@ -21,3 +21,4 @@ SWEA 문제를 푸는 공간입니다.
 |20260826     | [PRO] 직선열차      |[직선열차 바로가기](https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZjgXBL6ScPHBITM&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM&problemBoxTitle=B%ED%98%95+%EA%B8%B0%EC%B6%9C&problemBoxCnt=31) |
 |20260828     | 20260829 B형 시험 복기      |문제랑 풀이 기억해오기 |
 |20260831     | [PRO] 빙하의 이동      |[빙하의 이동 바로가기](https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZve05OqCl3HBIN6&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM&problemBoxTitle=Pro+%EA%B8%B0%EC%B6%9C&problemBoxCnt=31) |
+|20260907     | [PRO] 스마트팜      |[스마트팜 바로가기](https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZyYQt1aNvvHBIMr&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM&problemBoxTitle=Pro+%EA%B8%B0%EC%B6%9C&problemBoxCnt=31) |
