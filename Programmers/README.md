@@ -16,3 +16,4 @@ Programmers 문제를 푸는 공간입니다.
 |20260902     | 파괴되지 않은 건물        |[LV3 파괴되지 않은 건물 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/92344) |
 |20260903     | 순위        |[순위 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/49191) |
 |20260911     | 바이러스 파이프        |[바이러스 파이프 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/468373) |
+|20261008     | 완전범죄        |[완전범죄 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/389480) |
