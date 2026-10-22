@@ -19,3 +19,4 @@ Programmers 문제를 푸는 공간입니다.
 |20261008     | 완전범죄        |[완전범죄 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/389480) |
 |20261014     | 힌트 스테이지        |[힌트 스테이지 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/468377) |
 |20261019     | 사라지는 발판        |[사라지는 발판 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/92345) |
+|20261023     | 비밀 코드 해독        |[비밀 코드 해독 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/388352) |
