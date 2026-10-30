@@ -23,3 +23,4 @@ Programmers 문제를 푸는 공간입니다.
 |20261026     | 퍼즐 게임 챌린지        |[퍼즐 게임 챌린지 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/340212) |
 |20261028     | 표현 가능한 이진트리        |[표현 가능한 이진트리 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/150367) |
 |20261030     | 아날로그 시계      |[아날로그 시계 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/250135) |
+|20261102     | 데이터 분석      |[데이터 분석 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/250121) |
