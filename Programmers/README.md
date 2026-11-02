@@ -24,3 +24,4 @@ Programmers 문제를 푸는 공간입니다.
 |20261028     | 표현 가능한 이진트리        |[표현 가능한 이진트리 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/150367) |
 |20261030     | 아날로그 시계      |[아날로그 시계 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/250135) |
 |20261102     | 데이터 분석      |[데이터 분석 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/250121) |
+|20261104     | 양궁대회      |[양궁대회 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/92342) |
