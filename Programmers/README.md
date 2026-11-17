@@ -27,3 +27,4 @@ Programmers 문제를 푸는 공간입니다.
 |20261104     | 양궁대회      |[양궁대회 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/92342) |
 |20261106     | 섬 연결하기      |[섬 연결하기 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/42861) |
 |20261113     | 삼각 달팽이      |[삼각 달팽이 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/68645) |
+|20261120     | 풍성 터트리기      |[풍선 터트리기 바로가기](https://school.programmers.co.kr/learn/courses/30/lessons/68646) |
