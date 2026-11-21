@@ -56,7 +56,8 @@ class Solution {
     public int solution(int[] a) {
         int answer = 0;
         int n = a.length;
-        
+
+        // Integer.compare 없이 - 연산자로 Comparator를 작성하면 오버플로우로 인해서 제대로 정렬이 이루어지지 않는 것 같다
         PriorityQueue<Node> pq = new PriorityQueue<>((first, second) -> Integer.compare(first.value, second.value));
         for(int i = 0; i < n; i++){
             pq.offer(new Node(a[i], i));
